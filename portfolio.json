@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "name": "axiom-console-alan-vo",
+  "owner": "ALANDVO",
+  "email": "alanvo@gmail.com",
+  "domain": "AI/ML developer tools",
+  "summary": "Work in progress: axiom-console-alan-vo",
+  "workflows": [
+    "Create fixture with agent roles, tools, users, and permissions",
+    "Run audit suite against mock or real LLM providers",
+    "View scorecard with pillar-weighted grades, inspection results, and exportable reports"
+  ],
+  "auth": "oidc-keycloak-saml-broker",
+  "llm_providers": [
+    "openai-compatible",
+    "anthropic",
+    "gemini",
+    "ollama"
+  ],
+  "status": "work-in-progress"
+}
