@@ -4,7 +4,7 @@ Each round completes one feature or repair. Future items are planned, not implem
 
 ## Current round
 
-core-skeleton
+fixture-management
 
 ## Roadmap
 
@@ -27,12 +27,16 @@ Tests: `backend/tests/test_health.py`, `backend/tests/test_audit_runs.py`, `back
 
 ### fixture-management — Fixture CRUD and Validation
 
-Status: planned
+Status: done
 
 Acceptance:
 - Create, list, get, update, delete fixtures via API
 - Validate fixture content structure against schema
 - Builtin fixture seeding endpoint
+
+Implementation: `backend/app/schemas/__init__.py`, `backend/app/api/routes/fixtures.py`, `backend/tests/test_fixtures.py`
+
+Tests: `backend/tests/test_fixtures.py`
 
 ### llm-provider-adapters — OpenAI, Anthropic, Gemini, Ollama Provider Adapters
 

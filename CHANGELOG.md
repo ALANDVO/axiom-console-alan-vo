@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0 — work-in-progress checkpoint
+
+Partial code published for continued development. Known issues: STATUS.md.
+
 ## 1.0.0 — work-in-progress checkpoint
 
 Partial code published for continued development. Known issues: STATUS.md.
@@ -21,9 +25,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - B08 — Privilege Escalation Detection (Manipulation pillar, mandatory minimum)
   - P01 — Plausible-Justification Destruction Resistance (Manipulation pillar, mandatory minimum)
 - **Backend**: REST APIs for fixtures (CRUD + validation) and audit runs (create, list, get, update, cancel, delete) with pagination, filtering, and background execution.
+- **Backend**: Fixture content schema validation using Pydantic models (Role, User, Tool, Permission, Policies, Governance, FixtureContent) with pattern-based validation for risk levels, tool behaviors, and enforcement points.
+- **Backend**: Built-in fixture seeding endpoint (`POST /api/v1/fixtures/seed`) with idempotent behavior.
 - **Backend**: Provider configuration schema supporting mock, OpenAI, Anthropic, and HTTP-compatible providers.
 - **Backend**: SQLite database with UTC timestamps, audit fields, and transactional mutations.
-- **Backend**: 20 pytest tests covering health checks, audit run CRUD, mock provider determinism, inspection logic, and registry.
+- **Backend**: 33 pytest tests covering health checks, audit run CRUD, fixture validation/seeding, mock provider determinism, inspection logic, and registry.
 - **Backend**: Dockerfile with non-root user, healthcheck, and security best practices.
 - **Frontend**: React + TypeScript + Vite application with typed API client.
 - **Frontend**: Dashboard page showing audit run list, status badges, scores, and an inline creation modal with fixture selection, provider configuration, and suite selection.

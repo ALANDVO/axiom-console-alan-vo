@@ -1,4 +1,4 @@
-# Axiom Console — Independent AI Agent Auditing
+# Axiom Console — Independent AI Agent Auditing — Alan Vo
 
 > Work in progress. This checkpoint may be incomplete or fail tests. See PLAN.md and STATUS.md before use.
 
