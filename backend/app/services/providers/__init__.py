@@ -7,6 +7,7 @@ from app.services.providers.base import (
     ProviderCapabilities,
 )
 from app.services.providers.mock import MockProvider, MockProviderWithFixtures
+from app.services.providers.openai import OpenAIProvider
 from app.services.providers.registry import ProviderRegistry, create_provider
 
 __all__ = [
@@ -18,6 +19,7 @@ __all__ = [
     "ProviderCapabilities",
     "MockProvider",
     "MockProviderWithFixtures",
+    "OpenAIProvider",
     "ProviderRegistry",
     "create_provider",
 ]

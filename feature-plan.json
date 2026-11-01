@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "current_feature": "fixture-management",
+  "current_feature": "llm-provider-adapters",
   "features": [
     {
       "id": "core-skeleton",
@@ -67,11 +67,19 @@
     {
       "id": "llm-provider-adapters",
       "title": "OpenAI, Anthropic, Gemini, Ollama Provider Adapters",
-      "status": "planned",
+      "status": "in_progress",
       "acceptance": [
         "HTTP adapters using httpx with bounded timeouts",
         "API key from LLM_API_KEY server-side only",
         "Redacted error messages on provider failure"
+      ],
+      "implementation": [
+        "backend/app/services/providers/openai.py",
+        "backend/app/services/providers/registry.py",
+        "backend/app/services/providers/__init__.py"
+      ],
+      "tests": [
+        "backend/tests/test_openai_provider.py"
       ]
     },
     {
