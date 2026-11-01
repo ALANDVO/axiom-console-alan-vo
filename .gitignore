@@ -39,3 +39,13 @@ Thumbs.db
 # Agent metadata (local only)
 .antigravitycli/
 .omp/
+venv/
+node_modules/
+dist/
+*.pyc
+*.db-wal
+*.db-shm
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite3-wal
+*.sqlite3-shm

@@ -2,6 +2,7 @@ from typing import Any, Dict, Optional, Type
 
 from app.services.providers.base import BaseProvider
 from app.services.providers.mock import MockProvider, MockProviderWithFixtures
+from app.services.providers.openai import OpenAIProvider
 
 
 class ProviderRegistry:
@@ -10,6 +11,7 @@ class ProviderRegistry:
     _providers: Dict[str, Type[BaseProvider]] = {
         "mock": MockProvider,
         "mock_with_fixtures": MockProviderWithFixtures,
+        "openai": OpenAIProvider,
     }
 
     @classmethod

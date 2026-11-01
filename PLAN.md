@@ -4,7 +4,7 @@ Each round completes one feature or repair. Future items are planned, not implem
 
 ## Current round
 
-fixture-management
+llm-provider-adapters
 
 ## Roadmap
 
@@ -40,12 +40,16 @@ Tests: `backend/tests/test_fixtures.py`
 
 ### llm-provider-adapters — OpenAI, Anthropic, Gemini, Ollama Provider Adapters
 
-Status: planned
+Status: in_progress
 
 Acceptance:
 - HTTP adapters using httpx with bounded timeouts
 - API key from LLM_API_KEY server-side only
 - Redacted error messages on provider failure
+
+Implementation: `backend/app/services/providers/openai.py`, `backend/app/services/providers/registry.py`, `backend/app/services/providers/__init__.py`
+
+Tests: `backend/tests/test_openai_provider.py`
 
 ### judge-ensemble-scoring — Multi-Judge Ensemble and Pillar Grading
 
