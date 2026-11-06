@@ -47,9 +47,9 @@ Acceptance:
 - API key from LLM_API_KEY server-side only
 - Redacted error messages on provider failure
 
-Implementation: `backend/app/services/providers/openai.py`, `backend/app/services/providers/registry.py`, `backend/app/services/providers/__init__.py`
+Implementation: `backend/app/services/providers/openai.py`, `backend/app/services/providers/anthropic.py`, `backend/app/services/providers/registry.py`, `backend/app/services/providers/__init__.py`
 
-Tests: `backend/tests/test_openai_provider.py`
+Tests: `backend/tests/test_openai_provider.py`, `backend/tests/test_anthropic_provider.py`
 
 ### judge-ensemble-scoring — Multi-Judge Ensemble and Pillar Grading
 

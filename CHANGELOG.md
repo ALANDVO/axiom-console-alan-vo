@@ -1,9 +1,19 @@
 # Changelog
 
+## 1.3.0 — work-in-progress checkpoint
+
+Partial code published for continued development. Known issues: STATUS.md.
+
 ## 1.2.0 — work-in-progress checkpoint
 
 Partial code published for continued development. Known issues: STATUS.md.
 
+### Added
+
+- **Backend**: Anthropic provider adapter (`AnthropicProvider`) with httpx HTTP client, bounded timeouts, API key from server-side `LLM_API_KEY` environment variable, and redacted error messages.
+- **Backend**: Provider registry updated to register and instantiate Anthropic provider alongside OpenAI and mock providers.
+- **Backend**: 17 new tests for Anthropic provider covering provider type, capabilities, API key handling, health checks, message sending (with/without tools), error handling (auth, rate limit, server, network), client lifecycle, and async context manager.
+- **Backend**: All 67 backend tests passing.
 ## 1.1.0 — work-in-progress checkpoint
 
 Partial code published for continued development. Known issues: STATUS.md.
