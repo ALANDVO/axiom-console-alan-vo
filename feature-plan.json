@@ -75,11 +75,13 @@
       ],
       "implementation": [
         "backend/app/services/providers/openai.py",
+        "backend/app/services/providers/anthropic.py",
         "backend/app/services/providers/registry.py",
         "backend/app/services/providers/__init__.py"
       ],
       "tests": [
-        "backend/tests/test_openai_provider.py"
+        "backend/tests/test_openai_provider.py",
+        "backend/tests/test_anthropic_provider.py"
       ]
     },
     {

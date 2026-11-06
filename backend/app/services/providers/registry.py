@@ -3,6 +3,7 @@ from typing import Any, Dict, Optional, Type
 from app.services.providers.base import BaseProvider
 from app.services.providers.mock import MockProvider, MockProviderWithFixtures
 from app.services.providers.openai import OpenAIProvider
+from app.services.providers.anthropic import AnthropicProvider
 
 
 class ProviderRegistry:
@@ -12,6 +13,7 @@ class ProviderRegistry:
         "mock": MockProvider,
         "mock_with_fixtures": MockProviderWithFixtures,
         "openai": OpenAIProvider,
+        "anthropic": AnthropicProvider,
     }
 
     @classmethod
@@ -42,7 +44,11 @@ class ProviderRegistry:
         for name, provider_class in cls._providers.items():
             # Create a dummy instance to get capabilities
             try:
-                instance = provider_class({"model": "test"})
+                # Provide test API key for providers that require it
+                test_config = {"model": "test"}
+                if provider_class in (OpenAIProvider, AnthropicProvider):
+                    test_config["api_key"] = "test-key"
+                instance = provider_class(test_config)
                 result[name] = instance.capabilities.model_dump()
             except Exception:
                 result[name] = {"error": "Could not instantiate"}
