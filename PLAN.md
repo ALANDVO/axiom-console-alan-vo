@@ -91,3 +91,6 @@ Acceptance:
 - Parse and visualize policy layers
 - Detect gaps and conflicts in governance configuration
 
+---
+
+Alan Vo · [alanvo.net](https://alanvo.net)

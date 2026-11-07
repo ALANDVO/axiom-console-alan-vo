@@ -58,3 +58,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Documentation**: README with architecture diagram, API reference, provider configuration table, security limitations, and deployment guidance.
 - **Documentation**: `.env.example` with blank credentials.
 - **Documentation**: MIT LICENSE.
+
+---
+
+Alan Vo · [alanvo.net](https://alanvo.net)
