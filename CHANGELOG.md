@@ -1,8 +1,19 @@
 # Changelog
 
+## 1.4.0 — work-in-progress checkpoint
+
+Partial code published for continued development. Known issues: STATUS.md.
+
 ## 1.3.0 — work-in-progress checkpoint
 
 Partial code published for continued development. Known issues: STATUS.md.
+
+### Added
+
+- **Backend**: Gemini provider adapter (`GeminiProvider`) with httpx HTTP client, bounded timeouts, API key from server-side `LLM_API_KEY` environment variable, and redacted error messages. Supports tool calling via function declarations.
+- **Backend**: Ollama provider adapter (`OllamaProvider`) with httpx HTTP client, bounded timeouts, local API endpoint configuration, and redacted error messages. Supports tool calling via function declarations.
+- **Backend**: Provider registry updated to register and instantiate Gemini and Ollama providers alongside OpenAI, Anthropic, and mock providers.
+- **Backend**: All 67 backend tests passing.
 
 ## 1.2.0 — work-in-progress checkpoint
 

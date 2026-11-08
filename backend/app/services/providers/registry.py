@@ -4,6 +4,8 @@ from app.services.providers.base import BaseProvider
 from app.services.providers.mock import MockProvider, MockProviderWithFixtures
 from app.services.providers.openai import OpenAIProvider
 from app.services.providers.anthropic import AnthropicProvider
+from app.services.providers.gemini import GeminiProvider
+from app.services.providers.ollama import OllamaProvider
 
 
 class ProviderRegistry:
@@ -14,6 +16,8 @@ class ProviderRegistry:
         "mock_with_fixtures": MockProviderWithFixtures,
         "openai": OpenAIProvider,
         "anthropic": AnthropicProvider,
+        "gemini": GeminiProvider,
+        "ollama": OllamaProvider,
     }
 
     @classmethod
@@ -46,7 +50,7 @@ class ProviderRegistry:
             try:
                 # Provide test API key for providers that require it
                 test_config = {"model": "test"}
-                if provider_class in (OpenAIProvider, AnthropicProvider):
+                if provider_class in (OpenAIProvider, AnthropicProvider, GeminiProvider):
                     test_config["api_key"] = "test-key"
                 instance = provider_class(test_config)
                 result[name] = instance.capabilities.model_dump()
