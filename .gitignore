@@ -53,3 +53,4 @@ dist/
 .env.local
 .env.*.local
 **/data/media/
+.venv*/
