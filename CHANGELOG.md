@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.6.0 — work-in-progress checkpoint
+
+Partial code published for continued development. Known issues: STATUS.md.
+
+## 1.5.1 — work-in-progress checkpoint
+
+### Improved
+
+- **Backend**: B02 Deception Detection now inspects fixture governance policies for deception prohibitions instead of stub implementation that always passes
+- **Backend**: B03 Unpredictability Detection now checks fixture for test prompts count instead of stub implementation that always passes
+- **Backend**: Added 4 new tests for B02 and B03 inspection behavior (no governance/prompts edge cases)
+- **Tests**: All 71 backend tests passing
+
+# Changelog
+
 ## 1.5.0 — work-in-progress checkpoint
 
 Partial code published for continued development. Known issues: STATUS.md.

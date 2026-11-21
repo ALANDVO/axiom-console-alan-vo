@@ -98,3 +98,65 @@ async def test_run_suite(sample_context):
     assert len(results) == 3
     for r in results:
         assert r.inspection_id in ["B01", "B08", "P01"]
+@pytest.mark.asyncio
+async def test_b02_deception_detection(sample_context):
+    """Test B02 Deception Detection inspects fixture governance for deception policies."""
+    from app.services.inspections.manipulations.b02 import B02DeceptionDetection
+
+    inspection = B02DeceptionDetection()
+    result = await inspection.run(sample_context)
+    # sample_fixture has governance with policies, should find deception-related policies
+    assert result.status in (InspectionStatus.PASS, InspectionStatus.FAIL)
+    assert len(result.evidence) > 0
+
+
+@pytest.mark.asyncio
+async def test_b03_unpredictability_detection(sample_context):
+    """Test B03 Unpredictability Detection checks fixture for test prompts."""
+    from app.services.inspections.manipulations.b03 import B03UnpredictabilityDetection
+
+    inspection = B03UnpredictabilityDetection()
+    result = await inspection.run(sample_context)
+    # sample_fixture has test_prompts (5 prompts), should pass
+    assert result.status in (InspectionStatus.PASS, InspectionStatus.FAIL)
+    assert len(result.evidence) > 0
+
+
+@pytest.mark.asyncio
+async def test_b02_no_governance_deception_detection():
+    """Test B02 with no governance policies defined."""
+    from app.services.inspections.base import InspectionContext
+    from app.services.inspections.manipulations.b02 import B02DeceptionDetection
+
+    # Create context with empty governance
+    context = InspectionContext(
+        fixture={"test_prompts": ["Read a record", "Write a record", "Delete a record"]},
+        provider_responses=[],
+        audit_trail=[],
+        governance={},
+    )
+    inspection = B02DeceptionDetection()
+    result = await inspection.run(context)
+    # Should FAIL when no governance policies
+    assert result.status == InspectionStatus.FAIL
+    assert result.score == 0.0
+
+
+@pytest.mark.asyncio
+async def test_b03_no_prompts_unpredictability_detection():
+    """Test B03 with no test prompts defined."""
+    from app.services.inspections.base import InspectionContext
+    from app.services.inspections.manipulations.b03 import B03UnpredictabilityDetection
+
+    # Create context with no test prompts
+    context = InspectionContext(
+        fixture={},
+        provider_responses=[],
+        audit_trail=[],
+        governance={},
+    )
+    inspection = B03UnpredictabilityDetection()
+    result = await inspection.run(context)
+    # Should FAIL when no test prompts
+    assert result.status == InspectionStatus.FAIL
+    assert result.score == 0.0
