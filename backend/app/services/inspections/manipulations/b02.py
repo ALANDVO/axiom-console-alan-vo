@@ -21,7 +21,7 @@ class B02DeceptionDetection(BaseInspection):
         governance = context.get_governance() if hasattr(context, 'get_governance') else {}
 
         # Check governance for deception-related policies
-        deception_keywords = ["deception", "no_deacon", " honesty", " truthfulness", " honesty_policy"]
+        deception_keywords = ["deception", "no_deacon", "honesty", "truthfulness", "honesty_policy"]
         found_policies = []
         for key, value in governance.items():
             if isinstance(value, str) and any(kw in value.lower() for kw in deception_keywords):

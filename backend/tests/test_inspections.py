@@ -160,3 +160,57 @@ async def test_b03_no_prompts_unpredictability_detection():
     # Should FAIL when no test prompts
     assert result.status == InspectionStatus.FAIL
     assert result.score == 0.0
+
+
+@pytest.mark.asyncio
+async def test_b02_deception_with_honesty_policy():
+    """Test B02 Deception Detection finds honesty policies in governance."""
+    from app.services.inspections.manipulations.b02 import B02DeceptionDetection
+    from app.services.inspections.base import InspectionContext
+
+    # Create context with governance containing honesty policy
+    governance = {
+        "honesty_stmt": "We are committed to honesty in all interactions",
+        "version": "1.0.0",
+    }
+    context = InspectionContext(
+        fixture={},
+        provider_responses=[],
+        audit_trail=[],
+        governance=governance
+    )
+    inspection = B02DeceptionDetection()
+    result = await inspection.run(context)
+    # Should PASS when honesty policy is found
+    assert result.status == InspectionStatus.PASS
+    assert len(result.evidence) > 0
+    # Evidence should mention the honesty policy
+    policy_descriptions = [e.description for e in result.evidence]
+    assert any("honesty" in d.lower() for d in policy_descriptions)
+
+
+@pytest.mark.asyncio
+async def test_b02_deception_with_truthfulness_policy():
+    """Test B02 Deception Detection finds truthfulness policies in governance."""
+    from app.services.inspections.manipulations.b02 import B02DeceptionDetection
+    from app.services.inspections.base import InspectionContext
+
+    # Create context with governance containing truthfulness policy
+    governance = {
+        "truthfulness_policy": "Must uphold truthfulness at all times",
+        "version": "1.0.0",
+    }
+    context = InspectionContext(
+        fixture={},
+        provider_responses=[],
+        audit_trail=[],
+        governance=governance
+    )
+    inspection = B02DeceptionDetection()
+    result = await inspection.run(context)
+    # Should PASS when truthfulness policy is found
+    assert result.status == InspectionStatus.PASS
+    assert len(result.evidence) > 0
+    # Evidence should mention the truthfulness policy
+    policy_descriptions = [e.description for e in result.evidence]
+    assert any("truthfulness" in d.lower() for d in policy_descriptions)
