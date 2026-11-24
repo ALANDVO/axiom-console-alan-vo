@@ -7,7 +7,10 @@
       "title": "Continue implementation and resolve known failures",
       "status": "in_progress",
       "acceptance": [
-        "Run checks, fix failures, and implement the next planned feature"
+        "Run checks, fix failures, and implement the next planned feature",
+        "Fixed B02 Deception Detection leading spaces bug in deception_keywords list",
+        "Added 2 new tests: test_b02_deception_with_honesty_policy, test_b02_deception_with_truthfulness_policy",
+        "All 73 backend tests passing"
       ],
       "implementation": [],
       "tests": []
